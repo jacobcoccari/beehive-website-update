@@ -42,6 +42,8 @@ jobs:
           tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
           build-args: |
             NEXT_PUBLIC_GHOST_URL=${{ secrets.GHOST_URL }}
+            GHOST_URL=${{ secrets.GHOST_URL }}
+            GHOST_CONTENT_API_KEY=${{ secrets.GHOST_CONTENT_API_KEY }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
           no-cache: true
