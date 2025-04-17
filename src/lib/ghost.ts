@@ -1,6 +1,6 @@
 import GhostContentAPI from "@tryghost/content-api";
 import { PostOrPage, PostsOrPages, Nullable } from '@tryghost/content-api';
-import { Post } from '@/types/ghost';
+import { Post, Author, Tag } from '@/types/ghost';
 
 if (!process.env.GHOST_URL || !process.env.GHOST_CONTENT_API_KEY) {
   throw new Error('Ghost API configuration is missing');
@@ -13,7 +13,7 @@ const api = new GhostContentAPI({
   version: "v5.0"
 });
 
-export type { Post } from '@/types/ghost';
+export type { Post, Author, Tag } from '@/types/ghost';
 
 export function formatDate(dateString: string) {
   return new Date(dateString).toLocaleDateString('en-US', {
@@ -23,6 +23,30 @@ export function formatDate(dateString: string) {
   });
 }
 
+function transformGhostPost(post: PostOrPage): Post {
+  return {
+    id: post.id,
+    title: post.title || '',
+    slug: post.slug,
+    html: post.html || '',
+    feature_image: post.feature_image || undefined,
+    published_at: post.published_at || '',
+    reading_time: post.reading_time || 0,
+    authors: post.authors?.map(author => ({
+      id: author.id,
+      name: author.name || '',
+      profile_image: author.profile_image || undefined,
+      bio: author.bio || undefined
+    })),
+    tags: post.tags?.map(tag => ({
+      id: tag.id,
+      name: tag.name || '',
+      slug: tag.slug,
+      description: tag.description || undefined
+    }))
+  };
+}
+
 export async function getPosts(): Promise<Post[]> {
   try {
     const posts = await api.posts
@@ -30,7 +54,7 @@ export async function getPosts(): Promise<Post[]> {
         limit: "all",
         include: ["tags", "authors"]
       }) as PostsOrPages;
-    return posts as unknown as Post[];
+    return posts.map(transformGhostPost);
   } catch (error) {
     if (error instanceof Error) {
       console.error('Error fetching posts:', error.message);
@@ -48,7 +72,7 @@ export async function getRecentPosts(limit: number = 3): Promise<Post[]> {
         limit: limit,
         include: ["tags", "authors"]
       }) as PostsOrPages;
-    return posts as unknown as Post[];
+    return posts.map(transformGhostPost);
   } catch (error) {
     if (error instanceof Error) {
       console.error('Error fetching recent posts:', error.message);
@@ -66,7 +90,7 @@ export async function getSinglePost(slug: string): Promise<Post | null> {
         slug,
         include: ["tags", "authors"]
       } as { slug: Nullable<string>; include: string[] }) as PostOrPage;
-    return post as unknown as Post;
+    return transformGhostPost(post);
   } catch (error) {
     if (error instanceof Error) {
       console.error('Error fetching single post:', error.message);
@@ -85,7 +109,7 @@ export async function getFeaturedPosts(): Promise<Post[]> {
         limit: "3",
         include: ["tags", "authors"]
       }) as PostsOrPages;
-    return posts as unknown as Post[];
+    return posts.map(transformGhostPost);
   } catch (error) {
     if (error instanceof Error) {
       console.error('Error fetching featured posts:', error.message);

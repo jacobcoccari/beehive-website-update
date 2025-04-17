@@ -31,36 +31,23 @@ export default async function Home() {
   return (
     <div className="flex min-h-screen flex-col">
       <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="container flex h-16 items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-r from-yellow-400 to-blue-400">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="text-white"
-              >
-                <path d="M5 11s.5-2 2.5-2 2.5 2 2.5 2" />
-                <path d="M9 11s.5-2 2.5-2 2.5 2 2.5 2" />
-                <path d="M13 11s.5-2 2.5-2 2.5 2 2.5 2" />
-                <path d="M11 13.5V17" />
-                <path d="M8 13.5V17" />
-                <path d="M14 13.5V17" />
-                <path d="M11 5.5V9" />
-                <path d="M8 5.5V9" />
-                <path d="M14 5.5V9" />
-                <path d="M6 9h12" />
-                <path d="M6 13h12" />
-              </svg>
-            </div>
-            <span className="text-xl font-bold">Beehive Advisors</span>
-          </div>
+        <div className="flex h-16 items-center justify-between">
+          <Link href="#" className="flex items-center">
+            <Image
+              src="/Mobile Logo.svg"
+              alt="Beehive Advisors Logo"
+              width={48}
+              height={48}
+              className="md:hidden h-12 w-auto"
+            />
+            <Image
+              src="/Desktop Logo.svg"
+              alt="Beehive Advisors Logo"
+              width={48}
+              height={48}
+              className="hidden md:block h-12 w-auto"
+            />
+          </Link>
           <nav className="hidden md:flex gap-6">
             <Link href="#" className="text-sm font-medium hover:text-primary">
               Home
@@ -106,8 +93,8 @@ export default async function Home() {
       </header>
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="w-full bg-gradient-to-r from-yellow-400/10 via-yellow-300/10 to-blue-400/10 py-12 md:py-24 lg:py-32">
-          <div className="container px-4 md:px-6">
+        <section className="full-width-section bg-gradient-to-r from-yellow-400/10 via-yellow-300/10 to-blue-400/10 py-12 md:py-24 lg:py-32">
+          <div className="container-custom">
             <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 xl:grid-cols-2">
               <div className="flex flex-col justify-center space-y-4">
                 <div className="space-y-2">
@@ -498,34 +485,21 @@ export default async function Home() {
         <div className="container flex flex-col gap-6 py-8 md:py-12 px-4 md:px-6">
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-4">
             <div className="space-y-4">
-              <div className="flex items-center gap-2">
-                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-r from-yellow-400 to-blue-400">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="text-white"
-                  >
-                    <path d="M5 11s.5-2 2.5-2 2.5 2 2.5 2" />
-                    <path d="M9 11s.5-2 2.5-2 2.5 2 2.5 2" />
-                    <path d="M13 11s.5-2 2.5-2 2.5 2 2.5 2" />
-                    <path d="M11 13.5V17" />
-                    <path d="M8 13.5V17" />
-                    <path d="M14 13.5V17" />
-                    <path d="M11 5.5V9" />
-                    <path d="M8 5.5V9" />
-                    <path d="M14 5.5V9" />
-                    <path d="M6 9h12" />
-                    <path d="M6 13h12" />
-                  </svg>
-                </div>
-                <span className="text-lg font-bold">Beehive Advisors</span>
+              <div className="flex items-center">
+                <Image
+                  src="/Mobile Logo.svg"
+                  alt="Beehive Advisors Logo"
+                  width={48}
+                  height={48}
+                  className="md:hidden h-12 w-auto"
+                />
+                <Image
+                  src="/Desktop Logo.svg"
+                  alt="Beehive Advisors Logo"
+                  width={48}
+                  height={48}
+                  className="hidden md:block h-12 w-auto"
+                />
               </div>
               <p className="text-sm text-muted-foreground">
                 Transforming businesses with AI-powered learning solutions.
@@ -585,18 +559,20 @@ export default async function Home() {
               <h3 className="text-sm font-medium">Contact</h3>
               <ul className="space-y-2 text-sm">
                 <li className="text-muted-foreground">
-                  123 Innovation Way
+                  250 East 200 South
                   <br />
-                  San Francisco, CA 94103
+                  Suite 1600
+                  <br />
+                  Salt Lake City, Utah 84111
                 </li>
                 <li>
-                  <Link href="mailto:info@beehiveadvisors.com" className="text-muted-foreground hover:text-foreground">
-                    info@beehiveadvisors.com
+                  <Link href="mailto:support@beehive-advisors.com" className="text-muted-foreground hover:text-foreground">
+                    support@beehive-advisors.com
                   </Link>
                 </li>
                 <li>
-                  <Link href="tel:+14155551234" className="text-muted-foreground hover:text-foreground">
-                    (415) 555-1234
+                  <Link href="tel:+13859554432" className="text-muted-foreground hover:text-foreground">
+                    (385) 955-4432
                   </Link>
                 </li>
               </ul>

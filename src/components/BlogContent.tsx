@@ -1,7 +1,7 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { TOCItem, extractTableOfContents } from '@/lib/toc';
+import { useMemo } from 'react';
+import { extractTableOfContents } from '@/lib/toc';
 import { TableOfContents } from '@/components/TableOfContents';
 
 interface BlogContentProps {
@@ -9,12 +9,8 @@ interface BlogContentProps {
 }
 
 export function BlogContent({ html }: BlogContentProps) {
-  const [toc, setToc] = useState<TOCItem[]>([]);
-
-  useEffect(() => {
-    const tocItems = extractTableOfContents(html);
-    setToc(tocItems);
-  }, [html]);
+  // Compute TOC items once when html changes
+  const toc = useMemo(() => extractTableOfContents(html), [html]);
 
   return (
     <div className="flex flex-col lg:flex-row gap-8">

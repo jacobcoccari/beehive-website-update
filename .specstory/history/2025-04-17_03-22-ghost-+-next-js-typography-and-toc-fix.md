@@ -1235,6 +1235,72 @@ Let's fix this by updating the page component:
 
 ---
 
+```diff
+  import { ArrowLeft, Calendar, Clock, User } from "lucide-react"
+  import { getSinglePost, getPosts, formatDate } from "@/lib/ghost"
+- import { Button, buttonVariants } from "@/components/ui/button"
++ import { buttonVariants } from "@/components/ui/button"
+  import { BlogContent } from "@/components/BlogContent"
+  import { Post } from "@/types/ghost"
+  }
+  
+- export default async function BlogPostPage({ params }: { params: { slug: string } }) {
+-   const post = await getSinglePost(params.slug)
++ interface BlogPostPageProps {
++   params: Promise<{ slug: string }> | { slug: string }
++ }
++ 
++ export default async function BlogPostPage({ params }: BlogPostPageProps) {
++   // Ensure params is resolved
++   const resolvedParams = await Promise.resolve(params)
++   
++   if (!resolvedParams.slug) {
++     return notFound()
++   }
++ 
++   const post = await getSinglePost(resolvedParams.slug)
+    
+    if (!post) {
+```
+
+---
+
+The changes I made address several key points:
+
+1. **Type Safety**: Added a proper interface `BlogPostPageProps` that accounts for both synchronous and asynchronous params
+2. **Parameter Resolution**: Added `await Promise.resolve(params)` to ensure we have resolved params before accessing them
+3. **Null Check**: Added an explicit check for `resolvedParams.slug` before trying to use it
+4. **Clean Up**: Removed unused import of `Button` since we're only using `buttonVariants`
+
+The key changes are:
+
+1. Making the params type explicit with `Promise<{ slug: string }> | { slug: string }`
+2. Using `Promise.resolve()` to handle both promise and non-promise cases
+3. Adding proper null checks before accessing the slug
+
+This solution follows Next.js best practices for handling dynamic route parameters in the App Router. The error should now be resolved because we're properly awaiting and validating the params before using them.
+
+The reason we use `Promise.resolve()` instead of just `await params` is that `params` might already be resolved in some cases (like during static generation), and we want to handle both cases gracefully. `Promise.resolve()` is a safe way to handle both promises and regular objects uniformly.
+
+Let me know if you'd like me to explain any part of the solution in more detail!
+
+---
+
+_**User**_
+
+Is there any tech debt we can now remove, meaning code that is redundant, that we can change as a result of our conversation and related changes? 
+
+---
+
+_**Assistant**_
+
+Let me analyze our codebase for potential tech debt after our recent changes:
+
+1. **Ghost API Type Casting**:
+In `ghost.ts`, we're doing multiple unsafe type casts with `as unknown as Post`. Let's clean this up:
+
+---
+
 Cancelled
 
 ---

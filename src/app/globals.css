@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
-@tailwind utilities; 
+@tailwind utilities;
+
+@layer components {
+  .container-custom {
+    @apply max-w-[1280px] mx-auto px-[5vw] md:px-[7vw] lg:px-[8vw];
+    width: 100%;
+  }
+
+  .full-width-section {
+    @apply w-full relative;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+    width: 100vw;
+  }
+} 
