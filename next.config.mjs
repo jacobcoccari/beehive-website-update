@@ -4,7 +4,8 @@ const config = {
   images: {
     domains: [
       'static.ghost.org',
-      'ghost.beehive-advisors.com'
+      'ghost.beehive-advisors.com',
+      'www.gravatar.com'
     ],
   },
 };
