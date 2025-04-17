@@ -17,6 +17,8 @@ import {
   Calendar,
 } from "lucide-react"
 import BlogSection from "@/components/BlogSection"
+import { Header } from "@/components/Header"
+import { Footer } from "@/components/Footer"
 import { getRecentPosts, Post } from "@/lib/ghost"
 
 export const revalidate = 3600 // Revalidate every hour
@@ -30,67 +32,7 @@ export default async function Home() {
   
   return (
     <div className="flex min-h-screen flex-col">
-      <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="flex h-16 items-center justify-between">
-          <Link href="#" className="flex items-center">
-            <Image
-              src="/Mobile Logo.svg"
-              alt="Beehive Advisors Logo"
-              width={48}
-              height={48}
-              className="md:hidden h-12 w-auto"
-            />
-            <Image
-              src="/Desktop Logo.svg"
-              alt="Beehive Advisors Logo"
-              width={48}
-              height={48}
-              className="hidden md:block h-12 w-auto"
-            />
-          </Link>
-          <nav className="hidden md:flex gap-6">
-            <Link href="#" className="text-sm font-medium hover:text-primary">
-              Home
-            </Link>
-            <Link href="#services" className="text-sm font-medium hover:text-primary">
-              Services
-            </Link>
-            <Link href="#about" className="text-sm font-medium hover:text-primary">
-              About
-            </Link>
-            <Link href="#case-studies" className="text-sm font-medium hover:text-primary">
-              Case Studies
-            </Link>
-            <Link href="#blog" className="text-sm font-medium hover:text-primary">
-              Blog
-            </Link>
-            <Link href="#contact" className="text-sm font-medium hover:text-primary">
-              Contact
-            </Link>
-          </nav>
-          <Button className="hidden md:inline-flex bg-black text-white hover:bg-black/90">
-            Get Started
-          </Button>
-          <Button variant="ghost" size="icon" className="md:hidden">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <line x1="4" x2="20" y1="12" y2="12" />
-              <line x1="4" x2="20" y1="6" y2="6" />
-              <line x1="4" x2="20" y1="18" y2="18" />
-            </svg>
-            <span className="sr-only">Toggle menu</span>
-          </Button>
-        </div>
-      </header>
+      <Header />
       <main className="flex-1">
         {/* Hero Section */}
         <section className="full-width-gradient">
@@ -99,14 +41,14 @@ export default async function Home() {
               <div className="flex flex-col justify-center space-y-4">
                 <div className="space-y-2">
                   <h1 className="text-3xl sm:text-5xl xl:text-6xl/none font-bold tracking-tighter">
-                    <span className="bg-gradient-to-r from-yellow-400 to-blue-400 bg-clip-text text-transparent">Transform Your Business</span> with Our <span className="bg-gradient-to-r from-yellow-400 to-blue-400 bg-clip-text text-transparent">AI</span> Consulting and Integration Services
+                    <span className="bg-gradient-to-r from-yellow-400 to-blue-400 bg-clip-text text-transparent">Transform Your Business</span> with Our <span className="bg-gradient-to-r from-yellow-400 to-blue-400 bg-clip-text text-transparent">AI Consulting</span> and Integration Services
                   </h1>
                   <p className="max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                     Where expertise meets innovation to deliver impactful strategies for AI adoption.
                   </p>
                 </div>
                 <div className="flex flex-col gap-2 min-[400px]:flex-row">
-                  <Button className="bg-black text-white hover:bg-black/90">
+                  <Button className="bg-black text-white hover:bg-black/90 transition-all duration-200 hover:translate-x-1">
                     Explore Our Services
                     <ChevronRight className="ml-2 h-4 w-4" />
                   </Button>
@@ -197,7 +139,7 @@ export default async function Home() {
                   <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary">
                     <Brain className="h-6 w-6" />
                   </div>
-                  <CardTitle className="text-xl font-bold mt-4">AI Consulting</CardTitle>
+                  <CardTitle className="text-xl font-bold mt-4">Artificial Intelligence Consulting</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground">
@@ -216,7 +158,7 @@ export default async function Home() {
                   <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary">
                     <BookOpen className="h-6 w-6" />
                   </div>
-                  <CardTitle className="text-xl font-bold mt-4">Learning & Development Consulting</CardTitle>
+                  <CardTitle className="text-xl font-bold mt-4">Workforce Development & Corporate Training</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground">
@@ -234,7 +176,7 @@ export default async function Home() {
                   <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary">
                     <Cloud className="h-6 w-6" />
                   </div>
-                  <CardTitle className="text-xl font-bold mt-4">Enterprise LMS Solutions</CardTitle>
+                  <CardTitle className="text-xl font-bold mt-4">Enterprise AI Product Development</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground">
@@ -481,166 +423,7 @@ export default async function Home() {
           </div>
         </section>
       </main>
-      <footer className="w-full border-t bg-background">
-        <div className="container flex flex-col gap-6 py-8 md:py-12 px-4 md:px-6">
-          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-4">
-            <div className="space-y-4">
-              <div className="flex items-center">
-                <Image
-                  src="/Mobile Logo.svg"
-                  alt="Beehive Advisors Logo"
-                  width={48}
-                  height={48}
-                  className="md:hidden h-12 w-auto"
-                />
-                <Image
-                  src="/Desktop Logo.svg"
-                  alt="Beehive Advisors Logo"
-                  width={48}
-                  height={48}
-                  className="hidden md:block h-12 w-auto"
-                />
-              </div>
-              <p className="text-sm text-muted-foreground">
-                Transforming businesses with AI-powered learning solutions.
-              </p>
-            </div>
-            <div className="space-y-4">
-              <h3 className="text-sm font-medium">Services</h3>
-              <ul className="space-y-2 text-sm">
-                <li>
-                  <Link href="#" className="text-muted-foreground hover:text-foreground">
-                    AI Consulting
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="text-muted-foreground hover:text-foreground">
-                    L&D Consulting
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="text-muted-foreground hover:text-foreground">
-                    Enterprise LMS Solutions
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="text-muted-foreground hover:text-foreground">
-                    Custom Development
-                  </Link>
-                </li>
-              </ul>
-            </div>
-            <div className="space-y-4">
-              <h3 className="text-sm font-medium">Company</h3>
-              <ul className="space-y-2 text-sm">
-                <li>
-                  <Link href="#" className="text-muted-foreground hover:text-foreground">
-                    About Us
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="text-muted-foreground hover:text-foreground">
-                    Case Studies
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#blog" className="text-muted-foreground hover:text-foreground">
-                    Blog
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="text-muted-foreground hover:text-foreground">
-                    Careers
-                  </Link>
-                </li>
-              </ul>
-            </div>
-            <div className="space-y-4">
-              <h3 className="text-sm font-medium">Contact</h3>
-              <ul className="space-y-2 text-sm">
-                <li className="text-muted-foreground">
-                  250 East 200 South
-                  <br />
-                  Suite 1600
-                  <br />
-                  Salt Lake City, Utah 84111
-                </li>
-                <li>
-                  <Link href="mailto:support@beehive-advisors.com" className="text-muted-foreground hover:text-foreground">
-                    support@beehive-advisors.com
-                  </Link>
-                </li>
-                <li>
-                  <Link href="tel:+13859554432" className="text-muted-foreground hover:text-foreground">
-                    (385) 955-4432
-                  </Link>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div className="flex flex-col gap-4 sm:flex-row items-center justify-between">
-            <p className="text-xs text-muted-foreground">
-              &copy; {new Date().getFullYear()} Beehive Advisors. All rights reserved.
-            </p>
-            <div className="flex gap-4">
-              <Link href="#" className="text-muted-foreground hover:text-foreground">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="lucide lucide-linkedin"
-                >
-                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-                  <rect width="4" height="12" x="2" y="9" />
-                  <circle cx="4" cy="4" r="2" />
-                </svg>
-                <span className="sr-only">LinkedIn</span>
-              </Link>
-              <Link href="#" className="text-muted-foreground hover:text-foreground">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="lucide lucide-twitter"
-                >
-                  <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z" />
-                </svg>
-                <span className="sr-only">Twitter</span>
-              </Link>
-              <Link href="#" className="text-muted-foreground hover:text-foreground">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="lucide lucide-github"
-                >
-                  <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
-                  <path d="M9 18c-4.51 2-5-2-7-2" />
-                </svg>
-                <span className="sr-only">GitHub</span>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   )
 }
