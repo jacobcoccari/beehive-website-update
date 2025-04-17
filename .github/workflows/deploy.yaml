@@ -24,6 +24,8 @@ jobs:
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
+        with:
+          buildkitd-flags: --debug
 
       - name: Log in to the Container registry
         uses: docker/login-action@v3
@@ -44,13 +46,14 @@ jobs:
           cache-to: type=gha,mode=max
           no-cache: true
           provenance: false
+          platforms: linux/amd64
 
       - name: Checkout infrastructure repository
         uses: actions/checkout@v4
         with:
           repository: ${{ env.INFRA_REPO }}
           path: './infra'
-          token: ${{ secrets.INFRA_PAT }}  # Need a PAT to access the other repo
+          token: ${{ secrets.INFRA_PAT }}
 
       - name: Install kubectl
         uses: azure/setup-kubectl@v3
