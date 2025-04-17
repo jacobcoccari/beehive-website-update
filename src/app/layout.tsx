@@ -1,6 +1,6 @@
 import { GeistSans } from "geist/font/sans"
 import "./globals.css"
-
+//HELLO
 export const metadata = {
   title: "Beehive Advisors",
   description: "Beehive Advisors is a boutique consulting firm specializing in strategic advisory services.",
