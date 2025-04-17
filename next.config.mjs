@@ -1,13 +1,16 @@
 /** @type {import('next').NextConfig} */
-const config = {
+const nextConfig = {
+  output: 'standalone',
   reactStrictMode: true,
   images: {
-    domains: [
-      'static.ghost.org',
-      'ghost.beehive-advisors.com',
-      'www.gravatar.com'
+    domains: ['ghost.beehive-advisors.com'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**.ghost.io',
+      },
     ],
   },
 };
 
-export default config;
+export default nextConfig;
