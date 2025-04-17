@@ -6,7 +6,6 @@ import { ArrowLeft, Calendar, Clock, User } from "lucide-react"
 import { getSinglePost, getPosts, formatDate } from "@/lib/ghost"
 import { buttonVariants } from "@/components/ui/button"
 import { BlogContent } from "@/components/BlogContent"
-import { Post } from "@/types/ghost"
 import { cn } from "@/lib/utils"
 
 export const revalidate = 3600 // Revalidate every hour
@@ -21,23 +20,17 @@ export async function generateStaticParams() {
 }
 
 interface BlogPostPageProps {
-  params: Promise<{ slug: string }> | { slug: string }
+  params: Promise<{ slug: string }>
 }
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
-  // Ensure params is resolved
-  const resolvedParams = await Promise.resolve(params)
-  
-  if (!resolvedParams.slug) {
-    return notFound()
+  const resolvedParams = await params;
+  const post = await getSinglePost(resolvedParams.slug);
+
+  if (!post) {
+    notFound();
   }
 
-  const post = await getSinglePost(resolvedParams.slug)
-  
-  if (!post) {
-    return notFound()
-  }
-  
   return (
     <div className="container mx-auto px-4 py-12 md:px-6 md:py-24">
       <article className="max-w-4xl mx-auto">

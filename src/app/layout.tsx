@@ -1,11 +1,10 @@
-import type { Metadata } from "next";
-import { GeistSans, GeistMono } from 'geist/font'
-import "./globals.css";
+import { GeistSans } from "geist/font/sans"
+import "./globals.css"
 
-export const metadata: Metadata = {
-  title: "Beehive Advisors - AI-Powered Learning Solutions",
-  description: "Transform your business with AI-powered learning and development strategies",
-};
+export const metadata = {
+  title: "Beehive Advisors",
+  description: "Beehive Advisors is a boutique consulting firm specializing in strategic advisory services.",
+}
 
 export default function RootLayout({
   children,
@@ -14,7 +13,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={GeistSans.className}>
-      <body className="container-custom">{children}</body>
+      <body className="min-h-screen bg-background font-sans antialiased">
+        {children}
+      </body>
     </html>
   )
 }

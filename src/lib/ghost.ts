@@ -1,27 +1,41 @@
-import GhostContentAPI from "@tryghost/content-api";
-import { PostOrPage, PostsOrPages, Nullable } from '@tryghost/content-api';
-import { Post, Author, Tag } from '@/types/ghost';
+import GhostContentAPI from "@tryghost/content-api"
+import { PostOrPage, PostsOrPages, Nullable } from '@tryghost/content-api'
+import { format } from 'date-fns'
 
-if (!process.env.GHOST_URL || !process.env.GHOST_CONTENT_API_KEY) {
-  throw new Error('Ghost API configuration is missing');
+export interface Post {
+  id: string;
+  title: string;
+  slug: string;
+  html: string;
+  feature_image?: string;
+  published_at: string;
+  reading_time: number;
+  excerpt?: string;
+  custom_excerpt?: string;
+  featured?: boolean;
+  authors?: Array<{
+    id: string;
+    name: string;
+    profile_image?: string;
+    bio?: string;
+  }>;
+  tags?: Array<{
+    id: string;
+    name: string;
+    slug: string;
+    description?: string;
+  }>;
 }
 
-// Create API instance with site credentials
+if (!process.env.GHOST_URL || !process.env.GHOST_CONTENT_API_KEY) {
+  throw new Error('Ghost API configuration is missing')
+}
+
 const api = new GhostContentAPI({
   url: process.env.GHOST_URL,
   key: process.env.GHOST_CONTENT_API_KEY,
   version: "v5.0"
-});
-
-export type { Post, Author, Tag } from '@/types/ghost';
-
-export function formatDate(dateString: string) {
-  return new Date(dateString).toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric'
-  });
-}
+})
 
 function transformGhostPost(post: PostOrPage): Post {
   return {
@@ -32,6 +46,9 @@ function transformGhostPost(post: PostOrPage): Post {
     feature_image: post.feature_image || undefined,
     published_at: post.published_at || '',
     reading_time: post.reading_time || 0,
+    excerpt: post.excerpt || undefined,
+    custom_excerpt: post.custom_excerpt || undefined,
+    featured: post.featured || false,
     authors: post.authors?.map(author => ({
       id: author.id,
       name: author.name || '',
@@ -44,7 +61,7 @@ function transformGhostPost(post: PostOrPage): Post {
       slug: tag.slug,
       description: tag.description || undefined
     }))
-  };
+  }
 }
 
 export async function getPosts(): Promise<Post[]> {
@@ -53,15 +70,15 @@ export async function getPosts(): Promise<Post[]> {
       .browse({
         limit: "all",
         include: ["tags", "authors"]
-      }) as PostsOrPages;
-    return posts.map(transformGhostPost);
+      }) as PostsOrPages
+    return posts.map(transformGhostPost)
   } catch (error) {
     if (error instanceof Error) {
-      console.error('Error fetching posts:', error.message);
+      console.error('Error fetching posts:', error.message)
     } else {
-      console.error('Unknown error fetching posts:', error);
+      console.error('Unknown error fetching posts:', error)
     }
-    return [];
+    return []
   }
 }
 
@@ -71,15 +88,15 @@ export async function getRecentPosts(limit: number = 3): Promise<Post[]> {
       .browse({
         limit: limit,
         include: ["tags", "authors"]
-      }) as PostsOrPages;
-    return posts.map(transformGhostPost);
+      }) as PostsOrPages
+    return posts.map(transformGhostPost)
   } catch (error) {
     if (error instanceof Error) {
-      console.error('Error fetching recent posts:', error.message);
+      console.error('Error fetching recent posts:', error.message)
     } else {
-      console.error('Unknown error fetching recent posts:', error);
+      console.error('Unknown error fetching recent posts:', error)
     }
-    return [];
+    return []
   }
 }
 
@@ -89,16 +106,20 @@ export async function getSinglePost(slug: string): Promise<Post | null> {
       .read({
         slug,
         include: ["tags", "authors"]
-      } as { slug: Nullable<string>; include: string[] }) as PostOrPage;
-    return transformGhostPost(post);
+      } as { slug: Nullable<string>; include: string[] }) as PostOrPage
+    return transformGhostPost(post)
   } catch (error) {
     if (error instanceof Error) {
-      console.error('Error fetching single post:', error.message);
+      console.error('Error fetching single post:', error.message)
     } else {
-      console.error('Unknown error fetching single post:', error);
+      console.error('Unknown error fetching single post:', error)
     }
-    return null;
+    return null
   }
+}
+
+export function formatDate(date: string): string {
+  return format(new Date(date), 'MMMM d, yyyy')
 }
 
 export async function getFeaturedPosts(): Promise<Post[]> {
@@ -108,7 +129,7 @@ export async function getFeaturedPosts(): Promise<Post[]> {
         filter: "featured:true",
         limit: "3",
         include: ["tags", "authors"]
-      }) as PostsOrPages;
+      })
     return posts.map(transformGhostPost);
   } catch (error) {
     if (error instanceof Error) {

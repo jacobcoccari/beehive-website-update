@@ -12,8 +12,6 @@ import {
   Users,
   LineChart,
   Zap,
-  ArrowRight,
-  Quote,
   Calendar,
 } from "lucide-react"
 import BlogSection from "@/components/BlogSection"
@@ -187,7 +185,7 @@ export default async function Home() {
                   Our Services
                 </h2>
                 <p className="max-w-[700px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  Comprehensive solutions to transform your organization's learning and development
+                  Comprehensive solutions to transform your organization&apos;s learning and development
                 </p>
               </div>
             </div>
@@ -321,7 +319,7 @@ export default async function Home() {
                   Success Stories
                 </h2>
                 <p className="max-w-[700px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  See how we've helped organizations transform their learning and development
+                  See how we&apos;ve helped organizations transform their learning and development
                 </p>
               </div>
             </div>

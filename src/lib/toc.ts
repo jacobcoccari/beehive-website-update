@@ -7,36 +7,29 @@ export interface TOCItem {
 }
 
 export function extractTableOfContents(html: string): TOCItem[] {
-  // Create a temporary div to parse the HTML
-  const div = document.createElement('div');
-  div.innerHTML = html;
-  
-  // Get all headings
-  const headings = div.querySelectorAll('h1, h2, h3, h4, h5, h6');
-  
   const toc: TOCItem[] = [];
   
-  headings.forEach((heading) => {
-    // Get heading level number
-    const level = parseInt(heading.tagName.substring(1));
+  // Match all heading tags with their content
+  const headingRegex = /<h([1-6])[^>]*>(.*?)<\/h[1-6]>/g;
+  let match;
+  
+  while ((match = headingRegex.exec(html)) !== null) {
+    const level = parseInt(match[1]);
+    const text = match[2].replace(/<[^>]*>/g, ''); // Remove any nested HTML tags
     
-    // Get or create id from heading text
-    const id = heading.id || heading.textContent
-      ?.toLowerCase()
-      .replace(/[^\w\s-]/g, '')
-      .replace(/\s+/g, '-') || '';
-      
-    // If heading didn't have an id, set it
-    if (!heading.id) {
-      heading.id = id;
-    }
+    // Create an ID from the text
+    const id = text
+      .toLowerCase()
+      .replace(/<[^>]*>/g, '') // Remove any remaining HTML
+      .replace(/[^\w\s-]/g, '') // Remove special characters
+      .replace(/\s+/g, '-'); // Replace spaces with hyphens
     
     toc.push({
       id,
-      text: heading.textContent || '',
+      text,
       level,
     });
-  });
+  }
   
   return toc;
 } 
