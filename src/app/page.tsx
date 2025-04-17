@@ -241,13 +241,13 @@ export default async function Home() {
                 </div>
               </div>
               <div className="flex items-center justify-center">
-                <div className="relative h-[300px] w-[300px] sm:h-[400px] sm:w-[400px]">
+                <div className="relative w-full max-w-[400px] aspect-square">
                   <Image
-                    src="/placeholder.svg?height=400&width=400"
-                    alt="About Beehive Advisors"
-                    width={400}
-                    height={400}
-                    className="rounded-lg shadow-lg"
+                    src="/Utah.svg"
+                    alt="Utah - Home of Beehive Advisors"
+                    fill
+                    className="p-4 object-contain"
+                    priority
                   />
                 </div>
               </div>
