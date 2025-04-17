@@ -94,33 +94,6 @@ export default async function Home() {
           </div>
         </section>
 
-        {/* Blog Section */}
-        <BlogSection posts={posts} />
-
-        {/* CTA Section */}
-        <section
-          id="contact"
-          className="full-width-gradient"
-        >
-          <div className="container grid items-center justify-center gap-4 px-4 text-center md:px-6">
-            <div className="space-y-3">
-              <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">
-                Ready to Transform Your Learning Strategy?
-              </h2>
-              <p className="mx-auto max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                Get in touch to discover how we can help your organization thrive.
-              </p>
-            </div>
-            <div className="flex flex-col gap-2 min-[400px]:flex-row justify-center">
-              <Button className="border-2 border-transparent relative before:absolute before:inset-0 before:rounded-[inherit] before:p-[3px] before:bg-gradient-to-r before:from-yellow-400 before:to-blue-400 before:-z-10 after:absolute after:inset-[3px] after:rounded-[inherit] after:bg-white after:-z-10 text-black hover:before:from-yellow-500 hover:before:to-blue-500">
-                Schedule a Consultation
-                <Calendar className="ml-2 h-4 w-4" />
-              </Button>
-              <Button variant="outline">Learn more about our services</Button>
-            </div>
-          </div>
-        </section>
-
         {/* Services Section */}
         <section id="services" className="w-full py-12 md:py-24">
           <div className="container px-4 md:px-6">
@@ -195,6 +168,33 @@ export default async function Home() {
           </div>
         </section>
 
+        {/* CTA Section */}
+        <section
+          id="contact"
+          className="full-width-gradient"
+        >
+          <div className="container grid items-center justify-center gap-4 px-4 text-center md:px-6">
+            <div className="space-y-3">
+              <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">
+                Ready to Transform Your Learning Strategy?
+              </h2>
+              <p className="mx-auto max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                Get in touch to discover how we can help your organization thrive.
+              </p>
+            </div>
+            <div className="flex flex-col gap-2 min-[400px]:flex-row justify-center">
+              <Button className="border-2 border-transparent relative before:absolute before:inset-0 before:rounded-[inherit] before:p-[3px] before:bg-gradient-to-r before:from-yellow-400 before:to-blue-400 before:-z-10 after:absolute after:inset-[3px] after:rounded-[inherit] after:bg-white after:-z-10 text-black hover:before:from-yellow-500 hover:before:to-blue-500">
+                Schedule a Consultation
+                <Calendar className="ml-2 h-4 w-4" />
+              </Button>
+              <Button variant="outline">Learn more about our services</Button>
+            </div>
+          </div>
+        </section>
+
+        {/* Case Studies Section */}
+        <CaseStudies />
+
         {/* About Section */}
         <section
           id="about"
@@ -255,8 +255,8 @@ export default async function Home() {
           </div>
         </section>
 
-        {/* Case Studies Section */}
-        <CaseStudies />
+        {/* Blog Section */}
+        <BlogSection posts={posts} />
       </main>
       <Footer />
     </div>
