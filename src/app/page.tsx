@@ -68,7 +68,7 @@ export default async function Home() {
               Contact
             </Link>
           </nav>
-          <Button className="hidden md:inline-flex bg-gradient-to-r from-yellow-400 to-blue-400 text-white hover:from-yellow-500 hover:to-blue-500">
+          <Button className="hidden md:inline-flex bg-black text-white hover:bg-black/90">
             Get Started
           </Button>
           <Button variant="ghost" size="icon" className="md:hidden">
@@ -98,19 +98,19 @@ export default async function Home() {
             <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 xl:grid-cols-2">
               <div className="flex flex-col justify-center space-y-4">
                 <div className="space-y-2">
-                  <h1 className="text-3xl sm:text-5xl xl:text-6xl/none font-bold tracking-tighter bg-gradient-to-r from-yellow-400 to-blue-400 bg-clip-text text-transparent">
-                    Transform Your Business with AI-Powered Learning Solutions
+                  <h1 className="text-3xl sm:text-5xl xl:text-6xl/none font-bold tracking-tighter">
+                    <span className="bg-gradient-to-r from-yellow-400 to-blue-400 bg-clip-text text-transparent">Transform Your Business</span> with Our <span className="bg-gradient-to-r from-yellow-400 to-blue-400 bg-clip-text text-transparent">AI</span> Consulting and Integration Services
                   </h1>
                   <p className="max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                    Where expertise meets innovation to deliver impactful learning and development strategies
+                    Where expertise meets innovation to deliver impactful strategies for AI adoption.
                   </p>
                 </div>
                 <div className="flex flex-col gap-2 min-[400px]:flex-row">
-                  <Button className="bg-gradient-to-r from-yellow-400 to-blue-400 text-white hover:from-yellow-500 hover:to-blue-500">
+                  <Button className="bg-black text-white hover:bg-black/90">
                     Explore Our Services
                     <ChevronRight className="ml-2 h-4 w-4" />
                   </Button>
-                  <Button variant="outline">Learn More</Button>
+                  <Button variant="outline" className="border-2 border-black hover:bg-black hover:text-white">Learn More</Button>
                 </div>
               </div>
               <div className="flex items-center justify-center">
@@ -169,7 +169,7 @@ export default async function Home() {
               </p>
             </div>
             <div className="flex flex-col gap-2 min-[400px]:flex-row justify-center">
-              <Button className="bg-gradient-to-r from-yellow-400 to-blue-400 text-white hover:from-yellow-500 hover:to-blue-500">
+              <Button className="border-2 border-transparent relative before:absolute before:inset-0 before:rounded-[inherit] before:p-[3px] before:bg-gradient-to-r before:from-yellow-400 before:to-blue-400 before:-z-10 after:absolute after:inset-[3px] after:rounded-[inherit] after:bg-white after:-z-10 text-black hover:before:from-yellow-500 hover:before:to-blue-500">
                 Schedule a Consultation
                 <Calendar className="ml-2 h-4 w-4" />
               </Button>
