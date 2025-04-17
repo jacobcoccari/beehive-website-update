@@ -1,6 +1,11 @@
 # Build stage
 FROM --platform=amd64 node:20-alpine AS builder
 WORKDIR /app
+
+# Add build argument
+ARG NEXT_PUBLIC_GHOST_URL
+ENV NEXT_PUBLIC_GHOST_URL=$NEXT_PUBLIC_GHOST_URL
+
 RUN npm install -g pnpm
 
 # Copy package files
