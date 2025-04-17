@@ -2,16 +2,82 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer components {
-  .container-custom {
-    @apply max-w-[1280px] mx-auto px-[5vw] md:px-[7vw] lg:px-[8vw];
-    width: 100%;
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 5.9% 10%;
+    --radius: 0.5rem;
   }
+}
 
-  .full-width-section {
-    @apply w-full relative;
-    margin-left: calc(-50vw + 50%);
-    margin-right: calc(-50vw + 50%);
-    width: 100vw;
+.container-custom {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1280px;
+  padding-left: 5vw;
+  padding-right: 5vw;
+}
+
+@media (min-width: 768px) {
+  .container-custom {
+    padding-left: 7vw;
+    padding-right: 7vw;
   }
+}
+
+@media (min-width: 1024px) {
+  .container-custom {
+    padding-left: 8vw;
+    padding-right: 8vw;
+  }
+}
+
+.full-width-gradient {
+  position: relative;
+  width: 100%;
+  padding: 3rem 0;
+}
+
+@media (min-width: 768px) {
+  .full-width-gradient {
+    padding: 6rem 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  .full-width-gradient {
+    padding: 8rem 0;
+  }
+}
+
+.full-width-gradient::before {
+  content: '';
+  position: absolute;
+  width: 100vw;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  height: 100%;
+  top: 0;
+  background: linear-gradient(to right, rgba(250, 204, 21, 0.1), rgba(234, 179, 8, 0.1), rgba(96, 165, 250, 0.1));
+  z-index: -1;
 } 

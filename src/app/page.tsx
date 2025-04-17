@@ -93,8 +93,8 @@ export default async function Home() {
       </header>
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="full-width-section bg-gradient-to-r from-yellow-400/10 via-yellow-300/10 to-blue-400/10 py-12 md:py-24 lg:py-32">
-          <div className="container-custom">
+        <section className="full-width-gradient">
+          <div className="container mx-auto px-4 md:px-6">
             <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 xl:grid-cols-2">
               <div className="flex flex-col justify-center space-y-4">
                 <div className="space-y-2">
@@ -157,7 +157,7 @@ export default async function Home() {
         {/* CTA Section */}
         <section
           id="contact"
-          className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-r from-yellow-400/20 via-yellow-300/20 to-blue-400/20"
+          className="full-width-gradient"
         >
           <div className="container grid items-center justify-center gap-4 px-4 text-center md:px-6">
             <div className="space-y-3">
@@ -255,7 +255,7 @@ export default async function Home() {
         {/* About Section */}
         <section
           id="about"
-          className="w-full py-12 md:py-24 bg-gradient-to-r from-yellow-400/5 via-yellow-300/5 to-blue-400/5"
+          className="full-width-gradient"
         >
           <div className="container px-4 md:px-6">
             <div className="grid gap-6 lg:grid-cols-2 lg:gap-12">

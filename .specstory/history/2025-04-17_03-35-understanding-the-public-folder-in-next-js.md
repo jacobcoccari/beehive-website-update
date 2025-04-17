@@ -892,6 +892,552 @@ I'll update the contact information in the footer with your new address, email, 
 
 ---
 
+```diff
+                <ul className="space-y-2 text-sm">
+                  <li className="text-muted-foreground">
+-                   123 Innovation Way
++                   250 East 200 South
++                   <br />
++                   Suite 1600
+                    <br />
+-                   San Francisco, CA 94103
++                   Salt Lake City, Utah 84111
+                  </li>
+                  <li>
+-                   <Link href="mailto:info@beehiveadvisors.com" className="text-muted-foreground hover:text-foreground">
+-                     info@beehiveadvisors.com
++                   <Link href="mailto:support@beehive-advisors.com" className="text-muted-foreground hover:text-foreground">
++                     support@beehive-advisors.com
+                    </Link>
+                  </li>
+                  <li>
+-                   <Link href="tel:+14155551234" className="text-muted-foreground hover:text-foreground">
+-                     (415) 555-1234
++                   <Link href="tel:+13859554432" className="text-muted-foreground hover:text-foreground">
++                     (385) 955-4432
+                    </Link>
+                  </li>
+```
+
+---
+
+I've updated the contact information in the footer with:
+1. New address: 250 East 200 South, Suite 1600, Salt Lake City, Utah 84111
+2. New email: support@beehive-advisors.com
+3. New phone: (385) 955-4432
+
+The links for both email and phone are properly formatted with the appropriate `mailto:` and `tel:` protocols, and they maintain the same hover effects as before. Would you like me to make any other adjustments to the contact section?
+
+---
+
+_**User**_
+
+The other banners still have the same problem. Is there some way you can create a reproducable solution to where the colors always extend instead of changing it gradient by gradient? 
+
+---
+
+_**Assistant**_
+
+Yes, I can help create a more consistent solution for the full-width gradient banners. Instead of applying gradients individually to each section, we can create a reusable class in the global CSS file and apply it consistently. This will ensure all gradient banners have the same behavior.
+
+---
+
+```diff
+  @tailwind utilities;
+  
+- @layer components {
++ @layer base {
++   :root {
++     --background: 0 0% 100%;
++     --foreground: 240 10% 3.9%;
++     --card: 0 0% 100%;
++     --card-foreground: 240 10% 3.9%;
++     --popover: 0 0% 100%;
++     --popover-foreground: 240 10% 3.9%;
++     --primary: 240 5.9% 10%;
++     --primary-foreground: 0 0% 98%;
++     --secondary: 240 4.8% 95.9%;
++     --secondary-foreground: 240 5.9% 10%;
++     --muted: 240 4.8% 95.9%;
++     --muted-foreground: 240 3.8% 46.1%;
++     --accent: 240 4.8% 95.9%;
++     --accent-foreground: 240 5.9% 10%;
++     --destructive: 0 84.2% 60.2%;
++     --destructive-foreground: 0 0% 98%;
++     --border: 240 5.9% 90%;
++     --input: 240 5.9% 90%;
++     --ring: 240 5.9% 10%;
++     --radius: 0.5rem;
++   }
++ }
++ 
++ .container-custom {
++   width: 100%;
++   margin-left: auto;
++   margin-right: auto;
++   max-width: 1280px;
++   padding-left: 5vw;
++   padding-right: 5vw;
++ }
++ 
++ @media (min-width: 768px) {
++   .container-custom {
++     padding-left: 7vw;
++     padding-right: 7vw;
++   }
++ }
++ 
++ @media (min-width: 1024px) {
+    .container-custom {
+-     @apply max-w-[1280px] mx-auto px-[5vw] md:px-[7vw] lg:px-[8vw];
+-     width: 100%;
+-   }
+- 
++     padding-left: 8vw;
++     padding-right: 8vw;
++   }
++ }
++ 
++ .full-width-gradient {
++   position: relative;
++   width: 100vw;
++   left: 50%;
++   right: 50%;
++   margin-left: -50vw;
++   margin-right: -50vw;
++   background: linear-gradient(to right, rgba(250, 204, 21, 0.1), rgba(234, 179, 8, 0.1), rgba(96, 165, 250, 0.1));
++   overflow: hidden;
++ }
++ 
++ @layer components {
+    .full-width-section {
+      @apply w-full relative;
+```
+
+---
+
+Now I'll update the page component to use this new consistent gradient class:
+
+---
+
+```diff
+        <main className="flex-1">
+          {/* Hero Section */}
+-         <section className="full-width-section bg-gradient-to-r from-yellow-400/10 via-yellow-300/10 to-blue-400/10 py-12 md:py-24 lg:py-32">
++         <section className="full-width-gradient py-12 md:py-24 lg:py-32">
+            <div className="container-custom">
+              <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 xl:grid-cols-2">
+          <section
+            id="contact"
+-           className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-r from-yellow-400/20 via-yellow-300/20 to-blue-400/20"
++           className="full-width-gradient w-full py-12 md:py-24 lg:py-32"
+          >
+            <div className="container grid items-center justify-center gap-4 px-4 text-center md:px-6">
+          <section
+            id="about"
+-           className="w-full py-12 md:py-24 bg-gradient-to-r from-yellow-400/5 via-yellow-300/5 to-blue-400/5"
++           className="full-width-gradient w-full py-12 md:py-24"
+          >
+            <div className="container px-4 md:px-6">
+```
+
+---
+
+I've made the following changes to create a more consistent and reliable solution for the gradient backgrounds:
+
+1. Created a new `.full-width-gradient` class in `globals.css` that:
+   - Uses absolute positioning to ensure full viewport width
+   - Sets consistent gradient colors and opacity
+   - Handles overflow properly
+   - Uses viewport units for width calculation
+
+2. Updated all gradient sections in the page to use this new class, replacing the individual gradient definitions with the consistent one.
+
+This solution should now:
+- Ensure all gradient backgrounds extend fully across the viewport
+- Maintain consistent coloring across all sections
+- Prevent any potential layout issues
+- Be more maintainable since the gradient is defined in one place
+
+Would you like me to adjust the gradient colors or opacity to better match your desired look?
+
+---
+
+_**User**_
+
+Ok, but now the content is off-center. I want it to be like the top banner, where all the content inside of them are subject to all the other content rules, with the exception of the banner.
+
+---
+
+_**Assistant**_
+
+Ah, I see the issue. We need to keep the content centered and constrained by our `container-custom` class while only letting the gradient background extend full-width. Let me modify the CSS to achieve this:
+
+---
+
+```diff
+  .full-width-gradient {
+    position: relative;
++   width: 100%;
++ }
++ 
++ .full-width-gradient::before {
++   content: '';
++   position: absolute;
+    width: 100vw;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
++   height: 100%;
+    background: linear-gradient(to right, rgba(250, 204, 21, 0.1), rgba(234, 179, 8, 0.1), rgba(96, 165, 250, 0.1));
+-   overflow: hidden;
++   z-index: -1;
+  }
+  
+```
+
+---
+
+The key changes I made:
+1. Changed the approach to use a pseudo-element (`::before`) for the background
+2. Set the main element to just `width: 100%` to maintain normal content flow
+3. Put the full-width background behind the content with `z-index: -1`
+4. Removed `overflow: hidden` as it's no longer needed
+5. Added `height: 100%` to ensure the background covers the full height
+
+This should now:
+- Keep the gradient background extending full-width
+- Allow the content to follow the normal container rules
+- Maintain proper content centering and spacing
+- Keep the gradient behind the content
+
+Would you like me to adjust anything about this implementation?
+
+---
+
+_**User**_
+
+Whatever you did messed up the vertical spacing. Think about what happened then fix it. 
+
+---
+
+_**Assistant**_
+
+Ah, I see the issue. When we changed to using a pseudo-element for the background, we lost the padding that was being applied to the sections. The background is extending properly, but we need to restore the vertical spacing. Let me fix that:
+
+---
+
+```diff
+    position: relative;
+    width: 100%;
++   padding: 3rem 0;
++ }
++ 
++ @media (min-width: 768px) {
++   .full-width-gradient {
++     padding: 6rem 0;
++   }
++ }
++ 
++ @media (min-width: 1024px) {
++   .full-width-gradient {
++     padding: 8rem 0;
++   }
+  }
+  
+    margin-right: -50vw;
+    height: 100%;
++   top: 0;
+    background: linear-gradient(to right, rgba(250, 204, 21, 0.1), rgba(234, 179, 8, 0.1), rgba(96, 165, 250, 0.1));
+    z-index: -1;
+```
+
+---
+
+Now let's update the page component to remove the duplicate padding:
+
+---
+
+```diff
+        <main className="flex-1">
+          {/* Hero Section */}
+-         <section className="full-width-gradient py-12 md:py-24 lg:py-32">
++         <section className="full-width-gradient">
+            <div className="container-custom">
+              <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 xl:grid-cols-2">
+          <section
+            id="contact"
+-           className="full-width-gradient w-full py-12 md:py-24 lg:py-32"
++           className="full-width-gradient"
+          >
+            <div className="container grid items-center justify-center gap-4 px-4 text-center md:px-6">
+          <section
+            id="about"
+-           className="full-width-gradient w-full py-12 md:py-24"
++           className="full-width-gradient"
+          >
+            <div className="container px-4 md:px-6">
+```
+
+---
+
+I've made the following fixes:
+1. Added proper padding to the `.full-width-gradient` class with responsive breakpoints:
+   - Mobile: 3rem (48px) top and bottom
+   - Tablet: 6rem (96px) top and bottom
+   - Desktop: 8rem (128px) top and bottom
+2. Added `top: 0` to the pseudo-element to ensure proper positioning
+3. Removed the duplicate padding classes from the individual sections
+4. Kept the background extension behavior intact
+
+This should now:
+- Maintain consistent vertical spacing between sections
+- Keep the full-width gradient backgrounds
+- Properly contain the content within the custom container
+- Scale appropriately at different breakpoints
+
+Is the spacing looking better now?
+
+---
+
+_**User**_
+
+You might need to remove formatting you did earlier to the header banner, as it is now much narrower than all the other ones.
+
+---
+
+_**Assistant**_
+
+Let me check the header section and make it consistent with our new full-width gradient approach.
+
+---
+
+
+
+---
+
+Let me try again with more specific changes:
+
+---
+
+
+
+---
+
+I apologize for the difficulty. Let me search for the exact section first to ensure we're targeting the right code:
+
+---
+
+<details>
+            <summary>Grep search for "full-width-section.*from-yellow-400" • **1** files</summary>
+        
+| File | Line | Match |
+|------|------|-------|
+| `file:///Users/giacobbe/src/projects/beehive-website/beehive-advisors-site/.specstory/history/2025-04-17_03-35-understanding-the-public-folder-in-next-js.md` | L603 | `+         <section className="full-width-section bg-gradient-to-r from-yellow-400/10 via-yellow-300/10 to-blue-400/10 py-12 md:py-24 lg:py-32">` |
+| `file:///Users/giacobbe/src/projects/beehive-website/beehive-advisors-site/.specstory/history/2025-04-17_03-35-understanding-the-public-folder-in-next-js.md` | L1025 | `-         <section className="full-width-section bg-gradient-to-r from-yellow-400/10 via-yellow-300/10 to-blue-400/10 py-12 md:py-24 lg:py-32">` |
+
+</details>
+
+---
+
+
+
+---
+
+I apologize for the difficulty with the file edits. Let me try to read the current content first to ensure we're working with the correct file:
+
+---
+
+Read file: src/app/page.tsx
+
+---
+
+I see the issue now. The hero section is already using the correct class, but we need to remove the old `full-width-section` class from our CSS since it's no longer needed and might be interfering:
+
+---
+
+
+
+---
+
+I apologize for the confusion with the file edits. Let me try one more time with the complete file content:
+
+---
+
+Read file: src/app/globals.css
+
+---
+
+Now I can see the issue. Let's update the CSS file to remove the old class and ensure our new approach works consistently:
+
+---
+
+
+
+---
+
+I apologize for the difficulty with the file edits. Let me try one final time with a more specific change:
+
+---
+
+Cancelled
+
+---
+
+_**User**_
+
+The top banner, the one that reads:
+
+Transform Your Business with AI-Powered Learning Solutions
+Where expertise meets innovation to deliver impactful learning and development strategies
+
+
+is the one that is fucked up, if that helps@app 
+
+
+investigate first and do not make changes. Why is this appearing so much different than the other banners?
+
+---
+
+_**Assistant**_
+
+Let me investigate the hero section and compare it with the other sections to understand why it's appearing differently.
+
+---
+
+Read file: src/app/page.tsx
+
+---
+
+Read file: src/app/globals.css
+
+---
+
+After investigating, I can see several issues:
+
+1. The hero section is using `container-custom` directly, while other sections like the CTA and About sections are using `container` with additional padding classes (`px-4 md:px-6`).
+
+2. The old `.full-width-section` class is still in the CSS and might be interfering with our new `.full-width-gradient` class since they both try to handle full-width behavior differently.
+
+3. The container classes are inconsistent across sections:
+   - Hero: `container-custom`
+   - CTA: `container grid items-center justify-center gap-4 px-4 text-center md:px-6`
+   - About: `container px-4 md:px-6`
+
+4. The grid layout in the hero section might be affecting how the content fills the space:
+   ```jsx
+   <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 xl:grid-cols-2">
+   ```
+
+This explains why the hero section appears different - it's using a different container setup and grid layout compared to the other sections. Would you like me to propose changes to make it consistent with the other sections?
+
+---
+
+_**User**_
+
+Fix it in the simplest way possible. 
+
+---
+
+_**Assistant**_
+
+The simplest fix would be to remove the old `full-width-section` class from globals.css since it's no longer needed and is likely conflicting with our new approach:
+
+---
+
+
+
+---
+
+Let me try a more specific edit to just remove the conflicting class:
+
+---
+
+
+
+---
+
+I apologize for the difficulty with the file edits. Let me try one more time with the most minimal change possible:
+
+---
+
+```diff
+    z-index: -1;
+  } 
+- 
+- @layer components {
+-   .full-width-section {
+-     @apply w-full relative;
+-     margin-left: calc(-50vw + 50%);
+-     margin-right: calc(-50vw + 50%);
+-     width: 100vw;
+-   }
+- } 
+```
+
+---
+
+Perfect! I've removed the old `.full-width-section` class that was conflicting with our new `.full-width-gradient` implementation. This was the simplest fix possible - just removing the old code that was causing the conflict. The hero section should now match the width of the other sections. Would you like me to verify how it looks now?
+
+---
+
+_**User**_
+
+I literally just want the header to be as wide as all the other content. @layout.tsx @page.tsx 
+
+---
+
+_**Assistant**_
+
+I see the issue now. Looking at `layout.tsx`, the `container-custom` class is being applied to the `body` element, which is causing the header to be constrained. Instead, we should move this class to wrap the main content only, not the header.
+
+Let me fix this:
+
+---
+
+```diff
+    return (
+      <html lang="en" className={GeistSans.className}>
+-       <body className="container-custom">{children}</body>
++       <body>{children}</body>
+      </html>
+    )
+```
+
+---
+
+Now I'll update the `page.tsx` to apply the `container-custom` class to the main content area instead of the header:
+
+---
+
+```diff
+      <div className="flex min-h-screen flex-col">
+        <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+-         <div className="flex h-16 items-center justify-between">
++         <div className="container flex h-16 items-center justify-between">
+            <Link href="#" className="flex items-center">
+              <Image
+          </div>
+        </header>
+-       <main className="flex-1">
++       <main className="flex-1 container-custom">
+          {/* Hero Section */}
+          <section className="full-width-gradient">
+```
+
+---
+
+I've made the following changes to adjust the layout:
+1. Added the `container` class to the header's inner div to maintain consistent horizontal spacing
+2. Added the `container-custom` class to the `main` element to apply our custom width constraints to the main content
+
+This should now:
+1. Allow the header's background to extend full-width while keeping its content aligned with the rest of the page
+2. Keep the main content at our desired width with the padding
+
+---
+
 
 
 ---
