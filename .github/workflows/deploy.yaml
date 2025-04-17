@@ -38,6 +38,8 @@ jobs:
           context: .
           push: true
           tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+          build-args: |
+            NEXT_PUBLIC_GHOST_URL=${{ secrets.GHOST_URL }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
