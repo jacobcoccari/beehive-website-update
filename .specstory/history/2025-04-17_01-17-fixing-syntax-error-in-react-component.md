@@ -40,6 +40,16 @@ Fix this error and be as simple as possible. Do not fix any other error.
 
 _**Assistant**_
 
+Looking at the error and the linter errors, there's a missing closing tag for the `section` element in the Case Studies Section. Let me fix that by adding the closing tag.
+
+I'll edit the file to add the missing closing tag:
+
+---
+
+Cancelled
+
+---
+
 
 
 ---
