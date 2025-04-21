@@ -1,6 +1,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
+import { SchedulingModal } from "@/components/SchedulingModal"
 
 export function Header() {
   return (
@@ -42,9 +43,9 @@ export function Header() {
             Contact
           </Link>
         </nav>
-        <Button className="hidden md:inline-flex bg-black text-white hover:bg-black/90">
-          Get Started
-        </Button>
+        <div className="hidden md:block">
+          <SchedulingModal />
+        </div>
         <Button variant="ghost" size="icon" className="md:hidden">
           <svg
             xmlns="http://www.w3.org/2000/svg"
