@@ -1,4 +1,3 @@
-import Link from "next/link"
 import { getPosts, Post } from "@/lib/ghost"
 import { BlogCard } from "@/components/BlogCard"
 import { Header } from "@/components/Header"

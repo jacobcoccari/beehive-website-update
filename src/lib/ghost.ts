@@ -1,6 +1,6 @@
 import GhostContentAPI from "@tryghost/content-api";
 import { PostOrPage, PostsOrPages, Nullable } from '@tryghost/content-api';
-import { Post, Author, Tag } from '@/types/ghost';
+import { Post } from '@/types/ghost';
 
 if (!process.env.GHOST_URL || !process.env.GHOST_CONTENT_API_KEY) {
   throw new Error('Ghost API configuration is missing');
@@ -13,7 +13,7 @@ const api = new GhostContentAPI({
   version: "v5.0"
 });
 
-export type { Post, Author, Tag } from '@/types/ghost';
+export type { Post } from '@/types/ghost';
 
 export function formatDate(dateString: string) {
   return new Date(dateString).toLocaleDateString('en-US', {

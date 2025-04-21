@@ -20,6 +20,8 @@ export interface Post {
   feature_image?: string;
   published_at: string;
   reading_time: number;
+  excerpt?: string;
+  custom_excerpt?: string;
   authors?: Author[];
   tags?: Tag[];
 } 

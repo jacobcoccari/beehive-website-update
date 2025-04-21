@@ -9,7 +9,6 @@ import { BlogContent } from "@/components/BlogContent"
 import { ClientTableOfContents } from "@/components/ClientTableOfContents"
 import { Header } from "@/components/Header"
 import { Footer } from "@/components/Footer"
-import { Post } from "@/types/ghost"
 import { cn } from "@/lib/utils"
 
 export const revalidate = 3600 // Revalidate every hour
@@ -23,14 +22,13 @@ export async function generateStaticParams() {
   }))
 }
 
-interface BlogPostPageProps {
-  params: Promise<{ slug: string }> | { slug: string }
-}
+type PageProps = {
+  params: Promise<{ slug: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+};
 
-export default async function BlogPostPage({ params }: BlogPostPageProps) {
-  // Ensure params is resolved
-  const resolvedParams = await Promise.resolve(params)
-  
+export default async function BlogPostPage({ params }: PageProps) {
+  const resolvedParams = await params
   if (!resolvedParams.slug) {
     return notFound()
   }

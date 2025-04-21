@@ -12,7 +12,7 @@ export function CaseStudies() {
               Success Stories
             </h2>
             <p className="max-w-[700px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-              See how we've helped organizations transform their operations with AI
+              See how we&apos;ve helped organizations transform their operations with AI
             </p>
           </div>
         </div>
@@ -108,7 +108,7 @@ export function CaseStudies() {
                       <div>
                         <h3 className="font-medium">Solution</h3>
                         <p className="text-sm text-muted-foreground">
-                          We implemented an intelligent document processing system using computer vision and NLP to automatically extract and validate insurance information, verify coverage details, and integrate with the clinic's EMR system. The solution included real-time verification and automated follow-up workflows.
+                          We implemented an intelligent document processing system using computer vision and NLP to automatically extract and validate insurance information, verify coverage details, and integrate with the clinic&apos;s EMR system. The solution included real-time verification and automated follow-up workflows.
                         </p>
                       </div>
                       <div>

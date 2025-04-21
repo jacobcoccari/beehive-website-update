@@ -37,7 +37,7 @@ export default function BlogSection({ posts }: BlogSectionProps) {
                       <p className="text-sm text-muted-foreground">Coming soon</p>
                       <h3 className="font-bold text-xl">Stay tuned for our blog posts</h3>
                       <p className="text-muted-foreground line-clamp-2">
-                        We're working on creating valuable content for you.
+                        We&apos;re working on creating valuable content for you.
                       </p>
                     </div>
                   </CardContent>
