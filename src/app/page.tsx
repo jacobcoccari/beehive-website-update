@@ -18,6 +18,7 @@ import { Header } from "@/components/Header"
 import { Footer } from "@/components/Footer"
 import { CaseStudies } from "@/components/CaseStudies"
 import { getRecentPosts, Post } from "@/lib/ghost"
+import { SchedulingModal } from "@/components/SchedulingModal"
 
 export const revalidate = 3600 // Revalidate every hour
 
@@ -110,30 +111,12 @@ export default async function Home() {
                   <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary">
                     <Brain className="h-6 w-6" />
                   </div>
-                  <CardTitle className="text-xl font-bold mt-4">Artificial Intelligence Consulting</CardTitle>
+                  <CardTitle className="text-xl font-bold mt-4">Artificial Intelligence Consulting and Advisory</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground">
                     Leverage the power of artificial intelligence to transform your business operations and
                     decision-making processes.
-                  </p>
-                </CardContent>
-                <CardFooter>
-                  <Link href="#" className="text-sm font-medium text-primary flex items-center">
-                    Learn More <ChevronRight className="ml-1 h-4 w-4" />
-                  </Link>
-                </CardFooter>
-              </Card>
-              <Card className="rounded-lg border p-6 transition-all hover:shadow-md">
-                <CardHeader>
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary">
-                    <BookOpen className="h-6 w-6" />
-                  </div>
-                  <CardTitle className="text-xl font-bold mt-4">Workforce Development & Corporate Training</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground">
-                    Create effective learning strategies that empower your team and drive organizational growth.
                   </p>
                 </CardContent>
                 <CardFooter>
@@ -161,33 +144,28 @@ export default async function Home() {
                   </Link>
                 </CardFooter>
               </Card>
+              <Card className="rounded-lg border p-6 transition-all hover:shadow-md">
+                <CardHeader>
+                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary">
+                    <BookOpen className="h-6 w-6" />
+                  </div>
+                  <CardTitle className="text-xl font-bold mt-4">Workforce Development & Corporate Training</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground">
+                    Create effective learning strategies that empower your team and drive organizational growth.
+                  </p>
+                </CardContent>
+                <CardFooter>
+                  <Link href="#" className="text-sm font-medium text-primary flex items-center">
+                    Learn More <ChevronRight className="ml-1 h-4 w-4" />
+                  </Link>
+                </CardFooter>
+              </Card>
             </div>
           </div>
         </section>
 
-        {/* CTA Section */}
-        <section
-          id="contact"
-          className="full-width-gradient"
-        >
-          <div className="container grid items-center justify-center gap-4 px-4 text-center md:px-6">
-            <div className="space-y-3">
-              <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">
-                Ready to Transform Your Learning Strategy?
-              </h2>
-              <p className="mx-auto max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                Get in touch to discover how we can help your organization thrive.
-              </p>
-            </div>
-            <div className="flex flex-col gap-2 min-[400px]:flex-row justify-center">
-              <Button className="border-2 border-transparent relative before:absolute before:inset-0 before:rounded-[inherit] before:p-[3px] before:bg-gradient-to-r before:from-yellow-400 before:to-blue-400 before:-z-10 after:absolute after:inset-[3px] after:rounded-[inherit] after:bg-white after:-z-10 text-black hover:before:from-yellow-500 hover:before:to-blue-500">
-                Schedule a Consultation
-                <Calendar className="ml-2 h-4 w-4" />
-              </Button>
-              <Button variant="outline">Learn more about our services</Button>
-            </div>
-          </div>
-        </section>
 
         {/* Case Studies Section */}
         <CaseStudies />
@@ -251,9 +229,32 @@ export default async function Home() {
             </div>
           </div>
         </section>
+        
 
         {/* Blog Section */}
         <BlogSection posts={posts} />
+
+        {/* CTA Section */}
+        <section
+          id="contact"
+          className="full-width-gradient"
+        >
+          <div className="container grid items-center justify-center gap-4 px-4 text-center md:px-6">
+            <div className="space-y-3">
+              <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">
+                Ready to Transform Your Learning Strategy?
+              </h2>
+              <p className="mx-auto max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                Get in touch to discover how we can help your organization thrive.
+              </p>
+            </div>
+            <div className="flex justify-center">
+              <div className="w-full max-w-[600px]">
+                <SchedulingModal buttonClassName="w-full border-2 border-transparent relative before:absolute before:inset-0 before:rounded-[inherit] before:p-[3px] before:bg-gradient-to-r before:from-yellow-400 before:to-blue-400 before:-z-10 after:absolute after:inset-[3px] after:rounded-[inherit] after:bg-white after:-z-10 text-black hover:before:from-yellow-500 hover:before:to-blue-500" />
+              </div>
+            </div>
+          </div>
+        </section>
       </main>
       <Footer />
     </div>

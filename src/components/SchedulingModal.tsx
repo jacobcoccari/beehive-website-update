@@ -3,8 +3,13 @@
 import { Dialog, DialogContent, DialogTrigger, DialogTitle } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button"
 import { useEffect, useState } from "react"
+import { Calendar } from "lucide-react"
 
-export function SchedulingModal() {
+interface SchedulingModalProps {
+  buttonClassName?: string;
+}
+
+export function SchedulingModal({ buttonClassName }: SchedulingModalProps) {
   const [isOpen, setIsOpen] = useState(false)
 
   useEffect(() => {
@@ -33,8 +38,9 @@ export function SchedulingModal() {
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
-        <Button className="bg-black text-white hover:bg-black/90">
-          Contact Us
+        <Button className={buttonClassName || "bg-black text-white hover:bg-black/90"}>
+          Schedule a Consultation
+          <Calendar className="ml-2 h-4 w-4" />
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[650px] h-[85vh] max-h-[850px] p-0 overflow-hidden">
