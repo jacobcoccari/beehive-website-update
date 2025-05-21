@@ -36,26 +36,6 @@ Make sure to install all corresponding npm node and pnpm dependencies as detaile
    - Execute `pnpm build` to create production-ready application
    - The build outputs to the `.next` directory
 
-### Docker Environment
-The application uses a multi-stage Docker build process:
-
-1. **Builder Stage**:
-   - Based on node:20-alpine
-   - Installs pnpm and dependencies
-   - Builds the application 
-   - Sets NEXT_PUBLIC_GHOST_URL from build arguments
-
-2. **Runner Stage**:
-   - Based on node:20-alpine
-   - Runs as non-root user (nextjs:nodejs, uid/gid: 1001)
-   - Only copies necessary files from the builder stage
-   - Exposes port 3000
-
-### Replit Environment
-- Replit runs on Ubuntu 24.04 LTS
-- Environment variables are managed through Replit secrets
-- The startup script handles the build and run process
-
 ## Common Commands and Setup Scripts
 
 ### Main Commands
@@ -94,41 +74,7 @@ These scripts handle:
 - Keep components modular and reusable
 - Write descriptive commit messages
 
-## Testing and Validation
-
-### Testing Process
-1. **Dependency Verification**:
-   - Ensure all dependencies are correctly installed: `pnpm list`
-   - Check for any dependency conflicts: `pnpm why <package-name>`
-
-2. **Development Testing**:
-   - Run the application in development mode: `pnpm dev`
-   - Verify hot reloading works correctly
-   - Test all routes and features
-
-3. **Production Build Testing**:
-   - Build the application: `pnpm build`
-   - Start the production server: `pnpm start`
-   - Verify all routes and features in production mode
-   - Check for console errors and warnings
-
-4. **Environment Variable Testing**:
-   - Verify all required environment variables are set
-   - Test with different NEXT_PUBLIC_GHOST_URL values if applicable
-
-5. **Docker Image Testing** (if applicable):
-   - Build the Docker image: `docker build -t my-nextjs-app --build-arg NEXT_PUBLIC_GHOST_URL=<url> .`
-   - Run the container: `docker run -p 3000:3000 my-nextjs-app`
-   - Verify the application works correctly in the container
-
-## Pull Request Guidelines
-- Title format: `[Feature/Fix/Refactor]: Brief description of changes`
-- Include a detailed description of the changes
-- List any new dependencies added
-- Reference any related issues
-- Include screenshots for UI changes
-
-## Docker Build and Deployment
+##  Build and Deployment
 
 ### Docker Build Process
 The project uses a multi-stage Docker build to create optimized production images:
@@ -181,35 +127,3 @@ The project uses a multi-stage Docker build to create optimized production image
 - Exposes port 3000
 - Sets production environment variables
 
-## Troubleshooting
-
-### Common Issues and Solutions
-
-1. **Build Failures**:
-   - Check that all environment variables are correctly set
-   - Verify Node.js version matches the one in Dockerfile (v20)
-   - Clear the pnpm store: `pnpm store prune`
-   - Delete node_modules and reinstall: `rm -rf node_modules && pnpm install --frozen-lockfile`
-   - Check for duplicate dependencies: `pnpm dedupe`
-
-2. **Runtime Errors**:
-   - Check the server logs for detailed error messages
-   - Verify that the NEXT_PUBLIC_GHOST_URL is correctly set and accessible
-   - Ensure the application is listening on the correct port (3000)
-   - For permission issues in production, verify user/group ownership (nextjs:nodejs)
-
-3. **Deployment Issues**:
-   - When deploying to Replit, ensure the startup script is correctly set
-   - For Docker deployments, verify build arguments and environment variables
-   - Check network settings, especially HOSTNAME and PORT settings
-
-4. **Performance Issues**:
-   - Run Lighthouse or similar tools to identify bottlenecks
-   - Check for unoptimized images or excessive JavaScript
-   - Verify proper implementation of Next.js features like Image optimization and SSR/SSG
-
-## Performance Considerations
-- Optimize images and static assets
-- Implement proper code splitting and lazy loading
-- Be mindful of client-side versus server-side code
-- Use Next.js built-in optimizations where appropriate
