@@ -7,6 +7,7 @@ if (!process.env.GHOST_URL || !process.env.GHOST_CONTENT_API_KEY) {
 }
 
 // Create API instance with site credentials
+console.log(process.env.GHOST_URL, process.env.GHOST_CONTENT_API_KEY);
 const api = new GhostContentAPI({
   url: process.env.GHOST_URL,
   key: process.env.GHOST_CONTENT_API_KEY,
