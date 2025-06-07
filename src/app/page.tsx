@@ -20,6 +20,7 @@ import { Footer } from "@/components/Footer"
 import { CaseStudies } from "@/components/CaseStudies"
 import { getRecentPosts, Post } from "@/lib/ghost"
 import { SchedulingModal } from "@/components/SchedulingModal"
+import SocialProofComponent from "@/components/SocialProof"
 
 export const revalidate = 3600 // Revalidate every hour
 
@@ -41,7 +42,7 @@ export default async function Home() {
               <div className="flex flex-col justify-center space-y-4">
                 <div className="space-y-2">
                   <h1 className="text-3xl sm:text-5xl xl:text-6xl/none font-bold tracking-tighter">
-                    <span className="bg-gradient-to-r from-yellow-400 to-blue-400 bg-clip-text text-transparent">Transform Your Business</span> with Our <span className="bg-gradient-to-r from-yellow-400 to-blue-400 bg-clip-text text-transparent">AI Consulting</span> and Integration Services
+                    <span className="bg-gradient-to-r from-yellow-400 to-blue-400 bg-clip-text text-transparent">Transform Your Business</span> with Our <span className="bg-gradient-to-r from-yellow-400 to-blue-400 bg-clip-text text-transparent">AI Consulting</span> and Implementation Services
                   </h1>
                   <p className="max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                     Where expertise meets innovation to deliver impactful strategies for AI adoption.
@@ -92,6 +93,9 @@ export default async function Home() {
             </div>
           </div>
         </section>
+
+        {/* Social Proof Section */}
+        <SocialProofComponent />
 
         {/* Services Section */}
         <section id="services" className="w-full py-12 md:py-24">
@@ -251,7 +255,7 @@ export default async function Home() {
             </div>
             <div className="flex justify-center">
               <div className="w-full max-w-[600px]">
-                <SchedulingModal buttonClassName="w-full border-2 border-transparent relative before:absolute before:inset-0 before:rounded-[inherit] before:p-[3px] before:bg-gradient-to-r before:from-yellow-400 before:to-blue-400 before:-z-10 after:absolute after:inset-[3px] after:rounded-[inherit] after:bg-white after:-z-10 text-black hover:before:from-yellow-500 hover:before:to-blue-500" />
+                <SchedulingModal buttonClassName="w-full border-2 border-transparent relative before:absolute before:inset-0 before:rounded-[inherit] before:p-[3px] before:bg-gradient-to-r before:from-yellow-400 before:to-blue-400 before:-z-10 after:absolute after:inset-[3px] after:rounded-[inherit] after:bg-black after:-z-10 text-white text-lg py-4 px-6 hover:before:from-yellow-500 hover:before:to-blue-500" />
               </div>
             </div>
           </div>
