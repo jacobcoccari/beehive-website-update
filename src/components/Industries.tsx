@@ -7,7 +7,6 @@ import { Building2, Zap, Landmark, Stethoscope } from "lucide-react"
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
-import { useEffect, useState } from "react"
 
 interface IndustryCardProps {
   title: string
@@ -56,25 +55,6 @@ const IndustryCard = ({ title, description, icon, href, className }: IndustryCar
 }
 
 export default function IndustriesSection() {
-  const [columns, setColumns] = useState(4)
-
-  useEffect(() => {
-    const handleResize = () => {
-      const width = window.innerWidth
-      if (width < 640) {
-        setColumns(1)
-      } else if (width < 1024) {
-        setColumns(2)
-      } else {
-        setColumns(4)
-      }
-    }
-
-    handleResize()
-    window.addEventListener("resize", handleResize)
-    return () => window.removeEventListener("resize", handleResize)
-  }, [])
-
   const industries = [
     {
       title: "Commercial Real Estate",

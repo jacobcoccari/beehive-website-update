@@ -12,7 +12,6 @@ import {
   Users,
   LineChart,
   Zap,
-  Calendar,
 } from "lucide-react"
 import BlogSection from "@/components/BlogSection"
 import { Header } from "@/components/Header"
@@ -252,7 +251,7 @@ export default async function Home() {
           <div className="container grid items-center justify-center gap-4 px-4 text-center md:px-6">
             <div className="space-y-3">
               <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">
-                Ready to Transform Your Organization's AI Strategy?
+                Ready to Transform Your Organization&apos;s AI Strategy?
               </h2>
               <p className="mx-auto max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                 Get in touch to discover how we can help your organization thrive.
