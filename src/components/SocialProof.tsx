@@ -77,10 +77,9 @@ export default function SocialProofComponent() {
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            <span className="bg-gradient-to-r from-yellow-400 to-blue-400 bg-clip-text text-transparent">Global Reach </span> <span className="text-black"> of Beehive's</span>{" "}
-            <span className="bg-gradient-to-r from-yellow-400 to-blue-400 bg-clip-text text-transparent">Products & Services</span>
+            <span className="text-black"> Our</span>{" "}
+            <span className="bg-gradient-to-r from-yellow-400 to-blue-400 bg-clip-text text-transparent">Global Reach</span>
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-yellow-400 to-blue-400 mx-auto rounded-full"></div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">

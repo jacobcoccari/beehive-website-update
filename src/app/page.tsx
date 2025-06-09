@@ -17,10 +17,10 @@ import {
 import BlogSection from "@/components/BlogSection"
 import { Header } from "@/components/Header"
 import { Footer } from "@/components/Footer"
-import { CaseStudies } from "@/components/CaseStudies"
 import { getRecentPosts, Post } from "@/lib/ghost"
 import { SchedulingModal } from "@/components/SchedulingModal"
 import SocialProofComponent from "@/components/SocialProof"
+import IndustriesSection from "@/components/Industries"
 
 export const revalidate = 3600 // Revalidate every hour
 
@@ -111,60 +111,66 @@ export default async function Home() {
               </div>
             </div>
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 mt-8">
-              <Card className="rounded-lg border p-6 transition-all hover:shadow-md">
-                <CardHeader>
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary">
-                    <Brain className="h-6 w-6" />
+              <Card className="rounded-lg border p-3 transition-all hover:shadow-md group">
+                <CardHeader className="text-center pb-2">
+                  <div className="flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-yellow-400 to-amber-500 text-white group-hover:scale-110 transition-transform duration-300 mx-auto mb-2">
+                    <Brain className="h-7 w-7" />
                   </div>
-                  <CardTitle className="text-xl font-bold mt-4">Artificial Intelligence Consulting and Advisory</CardTitle>
+                  <CardTitle className="text-lg font-bold">Artificial Intelligence Consulting and Advisory</CardTitle>
                 </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground">
+                <CardContent className="text-center py-2">
+                  <p className="text-muted-foreground text-sm">
                     Leverage the power of artificial intelligence to transform your business operations and
                     decision-making processes.
                   </p>
                 </CardContent>
-                <CardFooter>
-                  <Link href="#" className="text-sm font-medium text-primary flex items-center">
-                    Learn More <ChevronRight className="ml-1 h-4 w-4" />
-                  </Link>
+                <CardFooter className="justify-center pt-2">
+                  <Button asChild size="sm" className="bg-black text-white hover:bg-black/90">
+                    <Link href="#" className="flex items-center">
+                      Learn More <ChevronRight className="ml-1 h-4 w-4" />
+                    </Link>
+                  </Button>
                 </CardFooter>
               </Card>
-              <Card className="rounded-lg border p-6 transition-all hover:shadow-md">
-                <CardHeader>
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary">
-                    <Cloud className="h-6 w-6" />
+              <Card className="rounded-lg border p-3 transition-all hover:shadow-md group">
+                <CardHeader className="text-center pb-2">
+                  <div className="flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-teal-600 text-white group-hover:scale-110 transition-transform duration-300 mx-auto mb-2">
+                    <Cloud className="h-7 w-7" />
                   </div>
-                  <CardTitle className="text-xl font-bold mt-4">Enterprise AI Product Development</CardTitle>
+                  <CardTitle className="text-lg font-bold">Enterprise AI Integration & Product Development</CardTitle>
                 </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground">
+                <CardContent className="text-center py-2">
+                  <p className="text-muted-foreground text-sm">
                     Scalable, customizable learning management systems built on Moodle to deliver your educational
                     content.
                   </p>
                 </CardContent>
-                <CardFooter>
-                  <Link href="#" className="text-sm font-medium text-primary flex items-center">
-                    Learn More <ChevronRight className="ml-1 h-4 w-4" />
-                  </Link>
+                <CardFooter className="justify-center pt-2">
+                  <Button asChild size="sm" className="bg-black text-white hover:bg-black/90">
+                    <Link href="#" className="flex items-center">
+                      Learn More <ChevronRight className="ml-1 h-4 w-4" />
+                    </Link>
+                  </Button>
                 </CardFooter>
               </Card>
-              <Card className="rounded-lg border p-6 transition-all hover:shadow-md">
-                <CardHeader>
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary">
-                    <BookOpen className="h-6 w-6" />
+              <Card className="rounded-lg border p-3 transition-all hover:shadow-md group">
+                <CardHeader className="text-center pb-2">
+                  <div className="flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-purple-500 to-pink-500 text-white group-hover:scale-110 transition-transform duration-300 mx-auto mb-2">
+                    <BookOpen className="h-7 w-7" />
                   </div>
-                  <CardTitle className="text-xl font-bold mt-4">Workforce Development & Corporate Training</CardTitle>
+                  <CardTitle className="text-lg font-bold">Workforce Development & Corporate Training</CardTitle>
                 </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground">
+                <CardContent className="text-center py-2">
+                  <p className="text-muted-foreground text-sm">
                     Create effective learning strategies that empower your team and drive organizational growth.
                   </p>
                 </CardContent>
-                <CardFooter>
-                  <Link href="#" className="text-sm font-medium text-primary flex items-center">
-                    Learn More <ChevronRight className="ml-1 h-4 w-4" />
-                  </Link>
+                <CardFooter className="justify-center pt-2">
+                  <Button asChild size="sm" className="bg-black text-white hover:bg-black/90">
+                    <Link href="#" className="flex items-center">
+                      Learn More <ChevronRight className="ml-1 h-4 w-4" />
+                    </Link>
+                  </Button>
                 </CardFooter>
               </Card>
             </div>
@@ -172,8 +178,8 @@ export default async function Home() {
         </section>
 
 
-        {/* Case Studies Section */}
-        <CaseStudies />
+        {/* Industries Section */}
+        <IndustriesSection />
 
         {/* About Section */}
         <section
