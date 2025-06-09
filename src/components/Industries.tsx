@@ -123,7 +123,7 @@ export default function IndustriesSection() {
   ]
 
   return (
-    <section className="py-16 px-4 md:px-8 max-w-7xl mx-auto">
+    <section id="industries" className="py-16 px-4 md:px-8 max-w-7xl mx-auto">
       <div className="text-center mb-12">
         <h2 className="text-4xl md:text-5xl font-bold mb-4">
           <span className="text-black">Industries </span>

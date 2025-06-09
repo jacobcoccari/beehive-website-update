@@ -24,19 +24,19 @@ export function Header() {
           />
         </Link>
         <nav className="hidden md:flex gap-6">
-          <Link href="#" className="text-sm font-medium hover:text-primary">
+          <Link href="/" className="text-sm font-medium hover:text-primary">
             Home
           </Link>
-          <Link href="#services" className="text-sm font-medium hover:text-primary">
-            Services
+          <Link href="/#industries" className="text-sm font-medium hover:text-primary">
+            Industries
           </Link>
           <Link href="#about" className="text-sm font-medium hover:text-primary">
             About
           </Link>
-          <Link href="#case-studies" className="text-sm font-medium hover:text-primary">
-            Case Studies
+          <Link href="#services" className="text-sm font-medium hover:text-primary">
+            Services
           </Link>
-          <Link href="#blog" className="text-sm font-medium hover:text-primary">
+          <Link href="/blog" className="text-sm font-medium hover:text-primary">
             Blog
           </Link>
           <Link href="#contact" className="text-sm font-medium hover:text-primary">

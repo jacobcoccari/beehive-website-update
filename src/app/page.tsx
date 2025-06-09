@@ -97,6 +97,69 @@ export default async function Home() {
         {/* Social Proof Section */}
         <SocialProofComponent />
 
+        {/* Industries Section */}
+        <IndustriesSection />
+
+        {/* About Section */}
+        <section
+          id="about"
+          className="full-width-gradient"
+        >
+          <div className="container px-4 md:px-6">
+            <div className="grid gap-6 lg:grid-cols-2 lg:gap-12">
+              <div className="flex flex-col justify-center space-y-4">
+                <div className="space-y-2">
+                  <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl bg-gradient-to-r from-yellow-400 to-blue-400 bg-clip-text text-transparent">
+                    About Beehive Advisors
+                  </h2>
+                  <p className="text-muted-foreground md:text-lg">
+                    Beehive Advisors combines expertise in artificial intelligence and learning development to create
+                    innovative solutions for modern businesses. We help organizations transform their approach to
+                    knowledge management and skill development.
+                  </p>
+                </div>
+                <div className="space-y-2">
+                  <div className="flex items-center space-x-2">
+                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 text-primary">
+                      <Zap className="h-4 w-4" />
+                    </div>
+                    <p className="font-medium">AI-First Approach</p>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 text-primary">
+                      <Users className="h-4 w-4" />
+                    </div>
+                    <p className="font-medium">Human-Centered Design</p>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 text-primary">
+                      <LineChart className="h-4 w-4" />
+                    </div>
+                    <p className="font-medium">Evidence-Based Methods</p>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 text-primary">
+                      <Star className="h-4 w-4" />
+                    </div>
+                    <p className="font-medium">Continuous Innovation</p>
+                  </div>
+                </div>
+              </div>
+              <div className="flex items-center justify-center">
+                <div className="relative w-full max-w-[400px] aspect-square">
+                  <Image
+                    src="/Utah.svg"
+                    alt="Utah - Home of Beehive Advisors"
+                    fill
+                    className="p-4 object-contain"
+                    priority
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Services Section */}
         <section id="services" className="w-full py-12 md:py-24">
           <div className="container px-4 md:px-6">
@@ -176,70 +239,6 @@ export default async function Home() {
             </div>
           </div>
         </section>
-
-
-        {/* Industries Section */}
-        <IndustriesSection />
-
-        {/* About Section */}
-        <section
-          id="about"
-          className="full-width-gradient"
-        >
-          <div className="container px-4 md:px-6">
-            <div className="grid gap-6 lg:grid-cols-2 lg:gap-12">
-              <div className="flex flex-col justify-center space-y-4">
-                <div className="space-y-2">
-                  <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl bg-gradient-to-r from-yellow-400 to-blue-400 bg-clip-text text-transparent">
-                    About Beehive Advisors
-                  </h2>
-                  <p className="text-muted-foreground md:text-lg">
-                    Beehive Advisors combines expertise in artificial intelligence and learning development to create
-                    innovative solutions for modern businesses. We help organizations transform their approach to
-                    knowledge management and skill development.
-                  </p>
-                </div>
-                <div className="space-y-2">
-                  <div className="flex items-center space-x-2">
-                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 text-primary">
-                      <Zap className="h-4 w-4" />
-                    </div>
-                    <p className="font-medium">AI-First Approach</p>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 text-primary">
-                      <Users className="h-4 w-4" />
-                    </div>
-                    <p className="font-medium">Human-Centered Design</p>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 text-primary">
-                      <LineChart className="h-4 w-4" />
-                    </div>
-                    <p className="font-medium">Evidence-Based Methods</p>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 text-primary">
-                      <Star className="h-4 w-4" />
-                    </div>
-                    <p className="font-medium">Continuous Innovation</p>
-                  </div>
-                </div>
-              </div>
-              <div className="flex items-center justify-center">
-                <div className="relative w-full max-w-[400px] aspect-square">
-                  <Image
-                    src="/Utah.svg"
-                    alt="Utah - Home of Beehive Advisors"
-                    fill
-                    className="p-4 object-contain"
-                    priority
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
         
 
         {/* Blog Section */}
@@ -253,7 +252,7 @@ export default async function Home() {
           <div className="container grid items-center justify-center gap-4 px-4 text-center md:px-6">
             <div className="space-y-3">
               <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">
-                Ready to Transform Your Learning Strategy?
+                Ready to Transform Your Organization's AI Strategy?
               </h2>
               <p className="mx-auto max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                 Get in touch to discover how we can help your organization thrive.
